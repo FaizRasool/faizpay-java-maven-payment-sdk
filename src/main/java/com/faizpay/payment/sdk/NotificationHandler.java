@@ -75,7 +75,7 @@ public class NotificationHandler {
 	 */
 	public boolean validateAmount(String requestedAmount) {
 		// validate amount
-		if (!NumberFormatter.validateTwoDecimals(requestedAmount)) {
+		if (!requestedAmount.matches("-?\\d+(\\.\\d+)?")) {
 			return false;
 		}
 

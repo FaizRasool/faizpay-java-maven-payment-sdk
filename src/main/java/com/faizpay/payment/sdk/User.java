@@ -20,7 +20,7 @@ public class User {
 	*/
 	public ErrorHandler isValid() {
 		// validate email
-		if (!this.email.equals("") && this.isValidEmailAddress(email)) {
+		if (!this.email.equals("") && !this.isValidEmailAddress(email)) {
 			return new ErrorHandler(Errors.CODE_11);
 		}
 
@@ -53,10 +53,11 @@ public class User {
 	 * @return boolean 
 	*/
 	public boolean isValidEmailAddress(String email) {
-		String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
-		java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
-		java.util.regex.Matcher m = p.matcher(email);
-		return m.matches();
+		String pattern = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
+		if (email.matches(pattern)) {
+			return true;
+		}
+		return false;
 	}
 
 	/**
@@ -66,7 +67,7 @@ public class User {
 	 * @param lastName user last name
 	 * @param contactNumber user contact number
 	*/
-	private User(String email, String firstName, String lastName, String contactNumber) {
+	public User(String email, String firstName, String lastName, String contactNumber) {
 		email = email.trim();
 		firstName = firstName.trim();
 		lastName = lastName.trim();

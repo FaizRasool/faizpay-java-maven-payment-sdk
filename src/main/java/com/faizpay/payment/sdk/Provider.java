@@ -17,11 +17,11 @@ public class Provider {
  	*/
 	public ErrorHandler isValid() {
 
-		if (!this.sortCode.equals("") && this.sortCode.length() != '6') {
+		if (!this.sortCode.equals("") && this.sortCode.length() != 6) {
 			return new ErrorHandler(Errors.CODE_7);
 		}
 
-		if (!this.accountNumber.equals("") && this.accountNumber.length() != '8') {
+		if (!this.accountNumber.equals("") && this.accountNumber.length() != 8) {
 			return new ErrorHandler(Errors.CODE_8);
 		}
 

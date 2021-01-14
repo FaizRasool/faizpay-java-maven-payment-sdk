@@ -51,13 +51,13 @@ public class Payment {
 		}
 
 		// validate amount
-		if (!NumberFormatter.validateTwoDecimals(this.amount)) {
-			return new ErrorHandler(Errors.CODE_5);
+		if (this.amount.equals("") || this.amount.equals("0.00") || Double.parseDouble(this.amount) < 0) {
+			return new ErrorHandler(Errors.CODE_4);
 		}
 
 		// validate amount
-		if (this.amount.equals("") || this.amount.equals("0.00") || Double.parseDouble(this.amount) < 0) {
-			return new ErrorHandler(Errors.CODE_4);
+		if (!NumberFormatter.validateTwoDecimals(this.amount)) {
+			return new ErrorHandler(Errors.CODE_5);
 		}
 
 		// validate order is greater than 255

@@ -19,7 +19,7 @@ public class NumberFormatter {
 	 * @return boolean
 	 */
 	public static boolean validateTwoDecimals(String number) {
-		if (number.matches("^[0-9]+(\\.[0-9]{1,2})?$")) {
+		if (number.matches("^[0-9]*\\.[0-9]{2}$")) {
 			return true;
 		}
 		return false;
